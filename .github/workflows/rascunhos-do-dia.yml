@@ -1,0 +1,36 @@
+name: Rascunhos do dia e publicação da fila
+on:
+  schedule:
+    - cron: '0 8 * * *'   # 05h em Brasília: escreve os textos do dia e publica aprovados da fila
+  workflow_dispatch:
+concurrency: { group: blog, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  rodar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install markdown
+      - name: Publicar aprovados que estavam na fila
+        run: python automacao/publicar.py
+        env:
+          APPS_SCRIPT_URL: ${{ secrets.APPS_SCRIPT_URL }}
+          APPS_SCRIPT_SEGREDO: ${{ secrets.APPS_SCRIPT_SEGREDO }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Escrever os rascunhos do dia e pedir aprovação
+        run: python automacao/escrever_rascunhos.py
+        env:
+          APPS_SCRIPT_URL: ${{ secrets.APPS_SCRIPT_URL }}
+          APPS_SCRIPT_SEGREDO: ${{ secrets.APPS_SCRIPT_SEGREDO }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Conferir se o site gera sem erro
+        run: python build.py site
+      - name: Salvar
+        run: |
+          git config user.name "Blog CLA (automação)"
+          git config user.email "contato@camargolourenco.adv.br"
+          git add posts rascunhos skill/references/observacoes-da-pratica.md
+          git diff --cached --quiet || git commit -m "Rascunhos e publicações de $(TZ=America/Sao_Paulo date +%d/%m/%Y)"
+          git push

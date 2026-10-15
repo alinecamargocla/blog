@@ -1,0 +1,29 @@
+name: Decisão de aprovação
+on:
+  repository_dispatch:
+    types: [aprovacao]   # enviado pelo script do Google quando a advogada confirma a decisão
+concurrency: { group: blog, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  decidir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install markdown
+      - name: Aplicar decisão (aprovar / ajustar / não publicar) e publicar se couber hoje
+        run: python automacao/aprovacao.py
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+          APPS_SCRIPT_URL: ${{ secrets.APPS_SCRIPT_URL }}
+          APPS_SCRIPT_SEGREDO: ${{ secrets.APPS_SCRIPT_SEGREDO }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - run: python build.py site
+      - name: Salvar
+        run: |
+          git config user.name "Blog CLA (automação)"
+          git config user.email "contato@camargolourenco.adv.br"
+          git add posts rascunhos skill/references/observacoes-da-pratica.md
+          git diff --cached --quiet || git commit -m "Decisão de aprovação"
+          git push

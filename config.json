@@ -1,0 +1,321 @@
+{
+  "site": "https://www.camargolourenco.adv.br",
+  "descricao": "Respostas práticas e em linguagem simples para dúvidas sobre INSS, aposentadoria, auxílio-doença, BPC, rescisão, FGTS e direitos do trabalhador. Advogadas em Barueri/SP.",
+  "cidades": [
+    "Barueri",
+    "Carapicuíba",
+    "Itapevi",
+    "Santana de Parnaíba",
+    "Jandira",
+    "Pirapora do Bom Jesus",
+    "Cajamar",
+    "Cotia",
+    "Alphaville"
+  ],
+  "calc_spa": "https://claude.ai/artifact/E3pg4Go1EQY9Zq3E67RwTV",
+  "artifact_url": "",
+  "calc_trab": [
+    {
+      "nome": "Rescisão",
+      "id": "resc"
+    },
+    {
+      "nome": "FGTS e multa de 40%",
+      "id": "fgts"
+    },
+    {
+      "nome": "Seguro-desemprego",
+      "id": "seg"
+    },
+    {
+      "nome": "Horas extras",
+      "id": "he"
+    },
+    {
+      "nome": "Férias",
+      "id": "fer"
+    },
+    {
+      "nome": "13º salário",
+      "id": "13"
+    }
+  ],
+  "calc_prev": [
+    {
+      "nome": "Renda do BPC/LOAS",
+      "url": "https://www.camargolourenco.adv.br/bpcloas#calculadora"
+    },
+    {
+      "nome": "Tempo de contribuição",
+      "url": "https://calculojuridico.com.br/calculadora-de-tempo-de-contribuicao-cj/"
+    },
+    {
+      "nome": "Qualidade de segurado",
+      "url": "https://calculojuridico.com.br/calculadora-de-qualidade-de-segurado-cj/"
+    },
+    {
+      "nome": "Prazo de decadência previdenciária",
+      "url": "https://calculojuridico.com.br/decadencia-previdenciaria-prazo-inss/"
+    },
+    {
+      "nome": "Acumulação de benefícios com pensão por morte",
+      "url": "https://calculojuridico.com.br/calculadora-acumulo-beneficio-pensao-morte/"
+    },
+    {
+      "nome": "Restituição de IR para pessoas com doenças graves",
+      "url": "https://calculojuridico.com.br/restituicao-imposto-renda-aposentadorias-doenca-grave/"
+    }
+  ],
+  "lp_trabalhista": "https://www.camargolourenco.adv.br/trabalhista",
+  "form_url": "",
+  "newsletter_assunto": "Blog Jurídico CLA — os textos de hoje",
+  "modelo": "claude-sonnet-5-5",
+  "aprovadores": {
+    "previdenciario": "aline@camargolourenco.adv.br",
+    "tributario": "aline@camargolourenco.adv.br",
+    "trabalhista": "lislie@camargolourenco.adv.br"
+  },
+  "uma_publicacao_por_area_por_dia": true,
+  "lps": [
+    {
+      "nome": "BPC/LOAS para idoso e pessoa com deficiência",
+      "caminho": "/bpcloas",
+      "area": "previdenciario",
+      "ativa": true,
+      "termos": [
+        "BPC",
+        "LOAS",
+        "benefício assistencial",
+        "pessoa com deficiência",
+        "CadÚnico"
+      ]
+    },
+    {
+      "nome": "Auxílio-acidente e acidente de trabalho",
+      "caminho": "/aux-acidente",
+      "area": "",
+      "ativa": true,
+      "termos": [
+        "auxílio-acidente",
+        "acidente de trabalho",
+        "sequela",
+        "acidente"
+      ]
+    },
+    {
+      "nome": "Direitos do trabalhador",
+      "caminho": "/trabalhista",
+      "area": "trabalhista",
+      "ativa": true,
+      "termos": [
+        "rescisão",
+        "demissão",
+        "justa causa",
+        "FGTS",
+        "horas extras",
+        "trabalhista",
+        "verbas"
+      ]
+    },
+    {
+      "nome": "Aposentadorias",
+      "caminho": "/aposentadorias",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "aposentadoria",
+        "tempo de contribuição",
+        "regra de transição"
+      ]
+    },
+    {
+      "nome": "Aposentadoria da pessoa com deficiência",
+      "caminho": "/aposentadorias-pcd",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "aposentadoria da pessoa com deficiência"
+      ]
+    },
+    {
+      "nome": "Auxílio-doença e aposentadoria por invalidez",
+      "caminho": "/auxilio-doenca-invalidez",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "auxílio-doença",
+        "incapacidade",
+        "invalidez",
+        "perícia"
+      ]
+    },
+    {
+      "nome": "Aposentadoria especial",
+      "caminho": "/aposentadoria-especial",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "aposentadoria especial",
+        "tempo especial",
+        "PPP",
+        "insalubridade"
+      ]
+    },
+    {
+      "nome": "Aposentadoria do professor",
+      "caminho": "/aposentadoria-prof",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "professor"
+      ]
+    },
+    {
+      "nome": "Pensão por morte",
+      "caminho": "/pensao-por-morte",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "pensão por morte"
+      ]
+    },
+    {
+      "nome": "Salário-maternidade",
+      "caminho": "/salario-maternidade",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "salário-maternidade"
+      ]
+    },
+    {
+      "nome": "Auxílio-reclusão",
+      "caminho": "/auxilio-reclusao",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "auxílio-reclusão"
+      ]
+    },
+    {
+      "nome": "Descontos indevidos na aposentadoria",
+      "caminho": "/descontos-indevidos",
+      "area": "previdenciario",
+      "ativa": false,
+      "termos": [
+        "desconto",
+        "consignado",
+        "associação"
+      ]
+    },
+    {
+      "nome": "Isenção do Imposto de Renda",
+      "caminho": "/isencaoir",
+      "area": "tributario",
+      "ativa": false,
+      "termos": [
+        "isenção",
+        "imposto de renda",
+        "doença grave",
+        "moléstia grave"
+      ]
+    },
+    {
+      "nome": "Defesa em execução fiscal",
+      "caminho": "/execucaofiscal",
+      "area": "tributario",
+      "ativa": false,
+      "termos": [
+        "execução fiscal",
+        "dívida ativa",
+        "bloqueio",
+        "penhora",
+        "CDA"
+      ]
+    }
+  ],
+  "equipe": [
+    {
+      "id": "aline-camargo",
+      "nome": "Aline Camargo",
+      "nome_completo": "Aline Mendes de Camargo",
+      "ini": "AC",
+      "cargo": "Sócia · Advogada Previdenciária e Tributária · Contadora",
+      "foto": "assets/equipe/aline-camargo.jpg",
+      "areas": [
+        "Direito Previdenciário",
+        "Direito Tributário"
+      ],
+      "bio": [
+        "Atua há mais de 15 anos nas áreas tributária e fiscal e, desde 2017, no Direito Previdenciário.",
+        "Trabalhou por 6 anos na EY, na análise e revisão de tributos diretos e indiretos, no levantamento de créditos tributários, na elaboração de pareceres e consultas sobre questões tributárias e fiscais e na reestruturação de operações. Tem ampla experiência em pareceres sobre a prática tributária e previdenciária, alterações da legislação e carga tributária de IR/CSLL, PIS/Cofins, ICMS e ICMS-ST, IPI, ISS e contribuições previdenciárias.",
+        "No Direito Previdenciário, acompanha cada caso do primeiro atendimento até o benefício no bolso do cliente. Antes de abrir qualquer processo, estuda o caso para saber se a pessoa realmente tem direito e qual é o melhor caminho. Depois, faz o pedido no INSS e, se ele for negado, recorre na via administrativa ou leva o caso à Justiça. Esse acompanhamento completo traz segurança a quem já enfrenta um momento difícil e evita pedidos que acabariam negados."
+      ],
+      "formacao": [
+        {
+          "curso": "Direito",
+          "instituicao": "UNIFIEO",
+          "ano": "2009"
+        },
+        {
+          "curso": "Ciências Contábeis",
+          "instituicao": "TREVISAN",
+          "ano": "2013"
+        },
+        {
+          "curso": "MBA em Perícia Contábil, Financeira e Tributária",
+          "instituicao": "TREVISAN",
+          "ano": "2020"
+        },
+        {
+          "curso": "Pós-graduação lato sensu em Execução Cível",
+          "instituicao": "Faculdade Focus",
+          "ano": "2026"
+        }
+      ],
+      "email": "aline@camargolourenco.adv.br",
+      "telefone": "(11) 96335-3678"
+    },
+    {
+      "id": "lislie-lourenco",
+      "nome": "Lislie Lourenço",
+      "nome_completo": "Lislie O. S. Lourenço",
+      "ini": "LL",
+      "cargo": "Sócia · Advogada Trabalhista e Cível",
+      "foto": "assets/equipe/lislie-lourenco.jpg",
+      "areas": [
+        "Direito do Trabalho",
+        "Processo do Trabalho",
+        "Direito Civil"
+      ],
+      "bio": [
+        "Advogada com mais de 15 anos de experiência no contencioso e no consultivo em várias áreas do Direito, oferecendo amplo suporte aos clientes.",
+        "Especialista em Direito e Processo do Trabalho, com atuação no contencioso e no consultivo, inclusive para empresas, com foco na prevenção de riscos trabalhistas."
+      ],
+      "formacao": [
+        {
+          "curso": "Direito",
+          "instituicao": "UNIFIEO",
+          "ano": "2009"
+        },
+        {
+          "curso": "Pós-graduação em Direito Civil e Processo Civil",
+          "instituicao": "Escola Paulista de Direito (EPD)",
+          "ano": "2015"
+        },
+        {
+          "curso": "Pós-graduação em Direito do Trabalho e Processual do Trabalho",
+          "instituicao": "Escola Paulista de Direito (EPD)",
+          "ano": "2018"
+        }
+      ],
+      "email": "lislie@camargolourenco.adv.br",
+      "telefone": "(11) 98034-7924"
+    }
+  ],
+  "escritorio_apresentacao": [
+    "O Camargo Lourenço Advogados tem como princípios a honestidade, a seriedade e a celeridade. O objetivo é buscar sempre o melhor para os clientes, trabalhando com excelência.",
+    "O escritório presta assessoria jurídica consultiva e contenciosa nas áreas de Direito Previdenciário, Direito do Trabalho, Direito Tributário, Direito Civil e Família e Sucessões, com atendimento 100% online ou presencial em Barueri e região."
+  ],
+  "escritorio_destaque": "A prioridade do escritório é o cliente!"
+}

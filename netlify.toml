@@ -1,0 +1,11 @@
+# Hospedagem do blog (Netlify). A cada alteração no repositório, o site é gerado e publicado.
+[build]
+  command = "pip install markdown && python build.py site"
+  publish = "dist/site"
+[build.environment]
+  PYTHON_VERSION = "3.12"
+[[headers]]
+  for = "/blog/newsletter/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-cache"

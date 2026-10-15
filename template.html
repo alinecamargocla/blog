@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="robots" content="index, follow, max-snippet:-1">
+<link rel="canonical" href="{{CANONICAL}}">
+<meta property="og:type" content="{{OGTYPE}}">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Camargo Lourenço Advogados">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:url" content="{{CANONICAL}}">
+<link rel="alternate" type="application/rss+xml" title="Blog Camargo Lourenço Advogados" href="{{SITE}}/blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Comfortaa:wght@400;600;700&display=swap">
+{{JSONLD}}
+<style>
+/* Paleta e fontes da LP trabalhista: faixas escuras (#013366) alternadas com faixas claras (#F2F2F2) */
+:root{
+  --navy:#013366;--navy-2:#0A3D73;--navy-3:#01264D;--line-d:#1D5089;
+  --gold:#E9DB88;--gold-ink:#9A7B1F;--sky:#8FC4F2;--ok:#6FDDB0;
+  --card:#1F4A80;--card-shadow:0 10px 26px -8px rgba(0,0,0,.45);
+  --display:"Marcellus SC","Century Gothic",Georgia,serif;
+  --body:Comfortaa,"Century Gothic","Segoe UI",sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+/* faixa escura (padrão) */
+.dark,header.top,footer.ft{--bg:#013366;--surface:#0A3D73;--fg:#F2F6FA;--muted:#B4C6D9;--line:#1D5089;--tint:#07457F;--accent:#E9DB88;background:var(--bg);color:var(--fg)}
+/* faixa clara */
+.light{--bg:#F2F2F2;--surface:#FFFFFF;--fg:#013366;--muted:#3E5068;--line:#DDE3EA;--tint:#E8EDF3;--accent:#9A7B1F;background:var(--bg);color:var(--fg)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 90px);-webkit-text-size-adjust:100%}
+body{margin:0;background:#013366;color:#F2F6FA;font-family:var(--body);font-size:16px;line-height:1.6}
+img{max-width:100%;height:auto}
+a{color:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:.02em;line-height:1.15;margin:0;text-wrap:balance;color:var(--fg)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:var(--gold);color:var(--navy);padding:8px 12px;z-index:99}
+section{padding-block:64px}
+.eyebrow{font-family:var(--display);font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block}
+.sec-head{display:grid;gap:12px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(1.6rem,3.6vw,2.3rem)}
+.sec-head p{color:var(--muted);margin:0;max-width:70ch}
+
+/* botões (iguais à LP) */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--body);font-weight:700;font-size:.92rem;letter-spacing:.03em;text-transform:uppercase;padding:14px 22px;border-radius:4px;border:2px solid transparent;cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-ink{background:var(--navy);color:#fff}
+.btn-ghost{background:transparent;border-color:currentColor;color:var(--fg)}
+.btn-wa{background:#1f9d55;color:#fff}
+
+
+/* marca do escritório ao fundo; caixas e textos ficam por cima, com cor sólida */
+.marca{position:fixed;inset:0;z-index:0;pointer-events:none;background-repeat:no-repeat;background-position:center 58%;background-size:min(86vw,980px) auto;opacity:.09}
+section>.wrap,.post-head>.wrap,.post-body>.wrap,#vista-lista>section>.wrap{position:relative;z-index:1}
+footer.ft{position:relative;z-index:2}
+.post-body>.wrap{background:#FFFFFF;border-radius:12px;padding:34px 38px;box-shadow:0 10px 26px -14px rgba(1,51,102,.35)}
+.post-body .quick{background:#F2F2F2;box-shadow:none}
+
+/* topo */
+header.top{position:sticky;top:0;z-index:20;box-shadow:0 6px 18px -8px rgba(0,0,0,.5);padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px}
+.brand img{height:56px;width:auto;display:block}
+.top nav{display:flex;gap:22px}
+.top nav a{color:#fff;text-decoration:none;font-size:.95rem;white-space:nowrap}
+.top nav a:hover,.top nav a[aria-current="true"]{color:var(--gold)}
+.top .btn{padding:12px 20px}
+
+/* abertura */
+.hero{padding-block:52px 60px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:48px;align-items:center}
+.hero-copy{display:grid;gap:20px;min-width:0}
+.kw{font-family:var(--display);font-weight:400;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0}
+.hero-tit{font-family:var(--display);font-size:clamp(2rem,4.2vw,3rem);line-height:1.15;letter-spacing:.02em;margin:0;text-wrap:balance}
+.hero-tit em{font-style:normal;color:var(--gold)}
+.lead{color:var(--muted);font-size:1.12rem;margin:0}
+.search{position:relative}
+.search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:var(--navy)}
+.search input{width:100%;font:inherit;font-size:1.05rem;padding:16px 18px 16px 50px;border-radius:4px;border:2px solid transparent;background:#fff;color:var(--navy)}
+.search input:focus{outline:none;border-color:var(--gold)}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font:inherit;font-weight:700;font-size:.875rem;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;padding:11px 18px;border-radius:4px;border:2px solid #fff;background:#013366;color:#fff}
+.search,.filters{position:relative}
+.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.count{color:var(--muted);font-size:.9rem;margin:0}
+.hero-side{display:grid;gap:16px}
+.box{background:var(--card);box-shadow:var(--card-shadow);border-radius:10px;padding:24px 22px}
+.box-t{font-family:var(--display);font-size:1.1rem;margin:0 0 14px}
+.temas{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.temas button{all:unset;cursor:pointer;display:flex;gap:14px;align-items:center;width:100%;padding:8px 0;font-weight:700;color:#fff}
+.temas button::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--gold);flex:none;align-self:flex-start;margin-top:7px}
+.temas button:hover,.temas button:focus-visible{color:var(--gold)}
+.temas small{display:block;font-weight:400;color:var(--muted);font-size:.875rem}
+.trust{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;color:var(--muted);font-size:.9rem;margin:0}
+.trust span::before{content:"✓ ";color:var(--ok)}
+
+/* lista */
+.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.cards li{display:flex}
+.cards .feat{flex:1;display:flex;flex-direction:column}
+.cards .feat h3{font-size:clamp(1.3rem,2.4vw,1.6rem)}
+.feat{display:block;text-decoration:none;background:var(--surface);border-left:5px solid var(--gold-ink);border-radius:10px;padding:26px 28px;box-shadow:0 10px 26px -14px rgba(1,51,102,.35)}
+.feat h3{font-size:clamp(1.4rem,3vw,2rem);margin:8px 0 12px}
+.feat p{margin:0;color:var(--muted)}
+.feat h3,.row h3{text-wrap:wrap;width:100%}
+.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.rows li{border-bottom:1px solid var(--line)}
+.row{display:grid;grid-template-columns:130px 1fr;gap:6px 26px;padding:20px 4px;text-decoration:none}
+.row:hover h3,.feat:hover h3{text-decoration:underline;text-decoration-color:var(--gold-ink);text-underline-offset:5px}
+.row h3{font-size:1.25rem;grid-column:2}
+.row p{grid-column:2;margin:0;color:var(--muted);font-size:.95rem}
+.row .meta{grid-row:1/3}
+.meta{font-size:.875rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.feat .meta{flex-direction:row;gap:14px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:.875rem;font-weight:700;color:var(--accent)}
+.empty{padding:28px 0;color:var(--muted)}
+
+/* artigo */
+.post-head{padding-block:36px 44px}
+.post-head .wrap,.post-body .wrap{max-width:820px}
+.back{display:inline-block;font-size:.92rem;text-decoration:none;color:var(--muted);margin-bottom:20px}
+.back:hover{color:var(--gold)}
+.post-head .tag{display:block;color:var(--gold)}
+.post-head h1{font-size:clamp(1.9rem,4.4vw,2.8rem);margin:10px 0 14px}
+.byline{color:var(--muted);font-size:.95rem;margin:0}
+.byline a{color:#fff}
+.post-body{padding-block:40px 64px}
+.quick{background:var(--surface);border-left:5px solid var(--gold-ink);border-radius:10px;padding:20px 24px;margin:0 0 30px;box-shadow:0 10px 26px -14px rgba(1,51,102,.35)}
+.quick b{font-family:var(--display);font-weight:400;font-size:1.05rem;display:block;margin-bottom:6px;color:var(--accent)}
+.quick p{margin:0;font-size:1.08rem}
+.prose{font-size:1.04rem;line-height:1.8}
+.prose h2{font-size:1.5rem;margin:38px 0 12px}
+.prose p,.prose ul,.prose ol{margin:0 0 16px}
+.prose li{margin-bottom:8px}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);color:var(--accent);font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:10px 0 0}
+.pratica{background:#F7F3E3;border:1px solid #E9DB88;border-left:5px solid var(--gold-ink);border-radius:10px;padding:6px 22px 8px;margin:30px 0}
+.pratica h2{margin:16px 0 8px!important;font-size:1.3rem}
+.pratica h2::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold-ink);margin-right:10px;vertical-align:middle}
+.pratica-por{font-size:.875rem;color:var(--muted);margin:-4px 0 10px!important;font-style:italic}
+.lp-link{margin:28px 0 0}
+.lp-link a{display:inline-flex;gap:8px;align-items:center;font-weight:700;color:var(--fg);text-decoration:none;border-bottom:2px solid var(--gold-ink);padding-bottom:2px}
+.lp-link a:hover{color:var(--gold-ink)}
+.note{font-size:.93rem;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;margin-top:34px}
+.author{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:center;background:var(--tint);border-radius:10px;padding:20px 22px;margin-top:24px}
+.author .mono{grid-row:1/3;width:54px;height:54px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-family:var(--display);font-size:1.3rem}
+.author b{font-family:var(--display);font-weight:400;font-size:1.15rem}
+.author span{color:var(--muted);font-size:.93rem}
+.share{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;align-items:center}
+.share small{color:var(--muted);font-size:.875rem}
+.related{margin-top:44px}
+.related h2{font-size:1.4rem;margin-bottom:8px}
+
+/* calculadoras (faixa escura) */
+.calc-t{font-size:1.25rem;margin:8px 0 14px}
+.calc-t+.calc-grid{margin-bottom:34px}
+.calc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.calc-grid a{background:var(--card);box-shadow:var(--card-shadow);border-radius:10px;padding:20px 22px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700}
+.calc-grid a::after{content:"→";color:var(--gold)}
+.calc-grid a:hover{color:var(--gold)}
+
+
+
+/* equipe */
+a.author{text-decoration:none;color:inherit}
+a.author:hover b{text-decoration:underline;text-decoration-color:var(--gold-ink)}
+.eq-escritorio{border-left:5px solid var(--gold-ink);padding:4px 0 4px 20px;margin:0 0 34px;font-size:1.05rem}
+.eq-escritorio p{margin:0 0 10px}
+.eq-destaque{text-align:center;font-family:var(--display);font-size:1.45rem;color:var(--accent);margin:-8px 0 30px}
+.eq-membro{display:grid;grid-template-columns:200px 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--line);scroll-margin-top:100px}
+.eq-foto{width:200px;height:240px;display:block;object-fit:cover;border-radius:10px;background:var(--navy)}
+.eq-mono{display:grid;place-items:center;color:var(--gold);font-family:var(--display);font-size:3rem}
+.eq-txt h2{font-size:1.6rem;margin:0 0 4px}
+.eq-cargo{font-weight:700;color:var(--accent);margin:0 0 4px}
+.eq-areas{color:var(--muted);font-size:.92rem;margin:0 0 14px}
+.eq-txt p{margin:0 0 12px}
+.eq-txt h3{font-size:1.1rem;margin:18px 0 8px}
+.eq-contato{margin:16px 0 0!important;font-size:.95rem}
+.eq-contato a{color:var(--fg);font-weight:700;text-decoration:none;border-bottom:2px solid var(--gold-ink)}
+.eq-txt ul{margin:0;padding-left:20px}
+.eq-txt li{margin:0 0 6px}
+@media (max-width:640px){.eq-membro{grid-template-columns:1fr}.eq-foto{width:140px;height:170px}}
+
+/* calculadoras: dois painéis separados */
+.calc-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:start}
+.calc-panel{border-radius:12px;padding:22px;box-shadow:var(--card-shadow)}
+.calc-panel.prev{background:#1F4A80;border-top:5px solid var(--gold)}
+.calc-panel.trab{background:#F2F2F2;color:#013366;border-top:5px solid #9A7B1F}
+.calc-ph{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.calc-ph h3{font-size:1.45rem;color:inherit}
+.calc-ic{font-weight:700;font-size:.75rem;letter-spacing:.06em;padding:6px 9px;border-radius:4px}
+.prev .calc-ic{background:var(--gold);color:#013366}
+.trab .calc-ic{background:#013366;color:#E9DB88}
+.calc-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.calc-link{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 16px;border-radius:8px;font-weight:700;font-size:.95rem}
+.prev .calc-link{background:#2A5A94;color:#fff}
+.prev .calc-link:hover,.prev .calc-link:focus-visible{background:#336AA8;color:var(--gold)}
+.trab .calc-link{background:#fff;color:#013366;box-shadow:0 2px 8px -4px rgba(1,51,102,.3)}
+.trab .calc-link:hover,.trab .calc-link:focus-visible{color:#9A7B1F}
+.calc-link small{display:block;font-weight:400;font-size:.85rem;opacity:.85;margin-top:2px}
+.calc-link.off{cursor:default;opacity:.75}
+.calc-soon{font-size:.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--gold);color:#013366;padding:4px 8px;border-radius:4px;white-space:nowrap}
+.calc-go{color:var(--gold)}.trab .calc-go{color:#9A7B1F}
+
+/* inscrição (faixa clara) */
+.news-box{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+form.nl{display:grid;gap:14px;background:var(--surface);border-radius:10px;padding:26px;box-shadow:0 10px 26px -14px rgba(1,51,102,.35)}
+.f label{display:block;font-size:.9rem;margin-bottom:6px;font-weight:700}
+.f textarea{width:100%;font:inherit;padding:13px 14px;border-radius:4px;border:1.5px solid var(--line);background:#fff;color:var(--fg);resize:vertical}
+.f textarea:focus{outline:none;border-color:var(--navy)}
+.f input[type=text],.f input[type=email]{width:100%;font:inherit;padding:13px 14px;border-radius:4px;border:1.5px solid var(--line);background:#fff;color:var(--fg)}
+.f input:focus{outline:none;border-color:var(--navy)}
+fieldset{border:0;padding:0;margin:0;display:flex;gap:18px;flex-wrap:wrap}
+legend{font-size:.9rem;font-weight:700;margin-bottom:6px;padding:0}
+.ck{display:flex;gap:10px;align-items:flex-start;font-size:.9rem}
+.ck input{margin-top:4px;accent-color:var(--navy);width:18px;height:18px}
+.msg{font-size:.95rem;min-height:1.4em;margin:0}
+.msg.ok{color:#12735A}.msg.err{color:#A4302B}
+
+
+/* receber por e-mail: faixa compacta */
+section.news{padding-block:40px}
+.news .news-box{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:32px;align-items:center}
+.news-txt h2{font-size:clamp(1.4rem,2.6vw,1.8rem);margin:8px 0 8px}
+.news-txt p{margin:0;color:var(--muted);font-size:.95rem}
+.news form.nl{gap:10px;padding:20px 22px}
+.nl-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}
+.nl-row .f input{padding:11px 12px}
+.nl-row .btn{padding:12px 20px}
+.nl-cks .ck{font-size:.875rem;align-items:center}
+.nl-cks .ck input{margin-top:0;width:16px;height:16px}
+.nl-duv label{color:var(--accent)}
+.nl-duv .opc{font-weight:400;color:var(--muted)}
+.news form.nl,.news form.nl>*{min-width:0;max-width:100%}
+.f textarea{display:block;box-sizing:border-box;max-width:100%}
+.nl-cks{display:flex;flex-wrap:wrap;gap:6px 20px}
+.news .msg{min-height:0}
+.nl-btn-end{display:none}
+
+/* rodapé reduzido (igual à LP) */
+footer.ft{padding-block:22px;font-size:.875rem}
+.ft .wrap{max-width:1500px}
+.ft-grid{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px 40px}
+.ft-img{width:180px;display:block}
+.ft-mid{display:grid;gap:4px;justify-items:center;text-align:center}
+.ft-row{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 24px}
+.ft-it{display:inline-flex;align-items:center;gap:8px}
+.ft-it svg{width:15px;height:15px;fill:#fff;flex:none}
+.ft a{color:#fff;text-decoration:none}
+.ft a:hover{color:var(--gold)}
+.ft-area{color:rgba(255,255,255,.75)}
+.ft-end{text-align:center}
+.ft-copy{color:rgba(255,255,255,.75);margin:2px 0 0}
+.ft-copy a{color:var(--gold)}
+.ft-social{display:flex;gap:8px}
+.soc{width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+.soc svg{width:21px;height:21px;fill:#fff}
+.soc.fb{background:#3B5998}.soc.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}.soc.tt{background:#000}.soc.wa{background:#25D366;border:0;cursor:pointer;padding:0}
+.nw{white-space:nowrap}
+
+@media (max-width:900px){
+  .top nav{display:none}
+  .hero .wrap{grid-template-columns:1fr;gap:32px}
+  .ft-grid{grid-template-columns:1fr;justify-items:center}
+}
+@media (max-width:640px){
+  section{padding-block:44px}
+  .brand img{height:44px}
+  .top .btn{padding:10px 14px;font-size:.8rem}
+  .hero{padding-block:32px 40px}
+  .row{grid-template-columns:1fr}
+  .row .meta{grid-row:auto;flex-direction:row;gap:12px}
+  .row h3,.row p{grid-column:1}
+  .feat{padding:20px}
+  .post-body>.wrap{padding:22px 18px;border-radius:0}
+  .cards{grid-template-columns:1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .calc-cols{grid-template-columns:1fr}
+  .news-box,.news .news-box{grid-template-columns:1fr;gap:16px}
+  .nl-row{grid-template-columns:1fr}
+  .nl-btn-top{display:none}
+  .nl-btn-end{display:inline-flex;width:100%}
+  #nl-duvida{min-height:96px}
+  .nw{white-space:normal}
+}
+
+/* botão flutuante do WhatsApp */
+.wa-fab{position:fixed;transition:bottom .1s linear;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;display:grid;justify-items:end;gap:10px}
+.wa-btn{width:60px;height:60px;border-radius:50%;background:#25D366;border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 22px -6px rgba(0,0,0,.45)}
+.wa-btn svg{width:32px;height:32px;fill:#fff}
+.wa-menu{background:#fff;color:#013366;border-radius:10px;box-shadow:0 12px 30px -8px rgba(0,0,0,.4);padding:14px;display:grid;gap:8px;min-width:240px}
+.wa-menu p{margin:0 0 2px;font-weight:700;font-size:.92rem}
+.wa-menu a{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:4px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;font-size:.92rem}
+.wa-menu a svg{width:20px;height:20px;fill:#fff}
+@media print{.wa-fab{display:none}}
+@media print{header.top,.hero,#calculadoras,#receber,.share,footer.ft{display:none}}
+</style>
+</head>
+<body data-mode="{{MODE}}">
+<div class="marca" aria-hidden="true" style="background-image:url('{{LOGO}}')"></div>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="{{HOME}}"><img src="{{LOGO}}" alt="Camargo Lourenço Advogados" width="685" height="276"></a>
+    <nav aria-label="Blog">
+      <a href="{{HOME}}" data-nav="todos">Todas as dúvidas</a>
+      <a href="{{HOME_PREV}}" data-nav="previdenciario">Previdenciário</a>
+      <a href="{{HOME_TRAB}}" data-nav="trabalhista">Trabalhista</a>
+      <a href="{{HOME_TRIB}}" data-nav="tributario">Tributário</a>
+      <a href="{{HOME_EQUIPE}}" data-nav="equipe">Equipe</a>
+      <a href="https://www.camargolourenco.adv.br/" target="_blank" rel="noopener">Outros Serviços</a>
+    </nav>
+    <a class="btn btn-gold" href="#calculadoras">Calculadoras</a>
+  </div>
+</header>
+
+<main id="conteudo">
+<div id="vista-lista" {{LIST_HIDDEN}}>
+  <section class="hero dark">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 class="kw">Blog Jurídico</h1>
+        <p class="hero-tit">Do trabalho à aposentadoria, <em>ao seu lado do início ao fim.</em></p>
+        <p class="lead">Aposentadoria, auxílio-doença, BPC, rescisão, FGTS, horas extras, execução fiscal e isenção de imposto de renda. Textos curtos, com o passo a passo do que fazer. Suas dúvidas respondidas em linguagem simples.</p>
+        <div class="search" role="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3a7 7 0 1 0 4.4 12.4l4.6 4.6 1.4-1.4-4.6-4.6A7 7 0 0 0 10 3zm0 2a5 5 0 1 1 0 10 5 5 0 0 1 0-10z"/></svg>
+          <label for="q" class="skip">Buscar uma dúvida</label>
+          <input id="q" type="search" placeholder="Digite sua dúvida: perícia, rescisão, FGTS…" autocomplete="off">
+        </div>
+        <div class="filters" role="group" aria-label="Filtrar por área">
+          <button class="chip" data-area="todos" aria-pressed="true">Todas</button>
+          <button class="chip" data-area="previdenciario" aria-pressed="false">Previdenciário</button>
+          <button class="chip" data-area="trabalhista" aria-pressed="false">Trabalhista</button>
+          <button class="chip" data-area="tributario" aria-pressed="false">Tributário</button>
+        </div>
+        <p class="count" id="count" aria-live="polite"></p>
+      </div>
+      <div class="hero-side">
+        <div class="box">
+          <p class="box-t">Qual é a sua dúvida?</p>
+          <ul class="temas">
+            <li><button data-busca="aposentadoria"><span>Aposentadoria<small>Tempo, idade, regras de transição</small></span></button></li>
+            <li><button data-busca="auxilio-doenca"><span>Auxílio-doença e perícia<small>Benefício negado, prorrogação</small></span></button></li>
+            <li><button data-busca="bpc"><span>BPC/LOAS e pensão<small>Idosos, pessoa com deficiência, família</small></span></button></li>
+            <li><button data-busca="rescisao"><span>Demissão e rescisão<small>O que a empresa tem que pagar</small></span></button></li>
+            <li><button data-busca="acidente"><span>Acidente e doença do trabalho<small>Direitos na empresa e no INSS</small></span></button></li>
+            <li><button data-busca="execucao fiscal"><span>Execução fiscal<small>Dívida cobrada pela Prefeitura, Estado ou União</small></span></button></li>
+            <li><button data-busca="isencao"><span>Isenção<small>Tudo sobre isenção de impostos</small></span></button></li>
+          </ul>
+        </div>
+        <p class="trust"><span>Linguagem simples</span><span>Passo a passo prático</span><span>Escrito por advogadas</span></p>
+      </div>
+    </div>
+  </section>
+  <section class="light" id="lista">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Publicações</span><h2 id="list-t">Dúvidas mais recentes</h2></div>
+      {{LIST_HTML}}
+      <p class="empty" id="empty" hidden>Nenhum texto encontrado com essas palavras. Tente outra forma de escrever a dúvida, como “aposentadoria” ou “demissão”.</p>
+    </div>
+  </section>
+</div>
+
+{{POSTS_HTML}}
+</main>
+
+<section class="dark" id="calculadoras">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Calcule você mesmo</span><h2>Calculadoras</h2>
+    <p>Faça uma estimativa com os seus próprios dados. O resultado é aproximado e serve para você conferir a sua situação.</p></div>
+    {{CALC_HTML}}
+  </div>
+</section>
+
+<section class="light news" id="receber">
+  <div class="wrap news-box">
+    <div class="news-txt"><span class="eyebrow">Receba por e-mail</span><h2>A dúvida do dia no seu e-mail</h2>
+      <p>A resposta rápida das dúvidas do dia no seu e-mail, com o link para ler o texto completo. Tem uma dúvida? Envie para a equipe: as mais frequentes viram textos do blog, sem identificar quem perguntou.</p></div>
+    <form class="nl" id="nl" novalidate>
+      <div class="nl-row">
+        <div class="f"><label for="nl-nome">Nome</label><input id="nl-nome" type="text" autocomplete="name" required></div>
+        <div class="f"><label for="nl-email">E-mail</label><input id="nl-email" type="email" autocomplete="email" required></div>
+        <button class="btn btn-ink nl-btn-top" type="submit">Enviar</button>
+      </div>
+      <div class="f nl-duv"><label for="nl-duvida">Sua dúvida para a equipe <span class="opc">(opcional)</span></label><textarea id="nl-duvida" rows="2" maxlength="1500" placeholder="Escreva a sua dúvida. Não inclua CPF, número de processo ou dados de saúde."></textarea></div>
+      <div class="nl-cks">
+        <label class="ck"><input type="checkbox" id="nl-receber" checked><span>Quero receber a newsletter</span></label>
+        <label class="ck"><input type="checkbox" id="nl-ok" required><span>Li e concordo com a <a href="https://www.camargolourenco.adv.br/politica-de-privacidade" target="_blank" rel="noopener">Política de Privacidade</a></span></label>
+      </div>
+      <button class="btn btn-ink nl-btn-end" type="submit">Enviar</button>
+      <p class="msg" id="nl-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<div class="wa-fab" id="wa-fab">
+  <div class="wa-menu" id="wa-menu" hidden>
+    <p>Falar com o escritório sobre:</p>
+    <a href="https://wa.me/5511963353678" data-wa="previdenciario" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> INSS e previdência</a>
+    <a href="https://wa.me/5511980347924" data-wa="trabalhista" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> Direitos do trabalhador</a>
+    <a href="https://wa.me/5511963353678" data-wa="tributario" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg> Impostos e execução fiscal</a>
+  </div>
+  <button class="wa-btn" id="wa-btn" aria-label="Falar pelo WhatsApp" aria-expanded="false" aria-controls="wa-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></button>
+</div>
+
+
+
+{{FOOTER}}
+
+<script>
+(function(){
+  var MODE=document.body.dataset.mode;
+  var SHARE_BASE={{SHARE_BASE}};
+  var CONTACT="contato@camargolourenco.adv.br";
+  var list=document.getElementById('vista-lista');
+  var posts=[].slice.call(document.querySelectorAll('article.post'));
+  var items=[].slice.call(document.querySelectorAll('[data-item]'));
+  var q=document.getElementById('q'), count=document.getElementById('count'), empty=document.getElementById('empty');
+  var area='todos';
+  function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+  function filtrar(){
+    var termos=norm(q?q.value:'').split(/\s+/).filter(Boolean), n=0;
+    items.forEach(function(el){
+      var okA=area==='todos'||el.dataset.area===area;
+      var txt=norm(el.dataset.busca);
+      var okQ=termos.every(function(t){return txt.indexOf(t)>-1});
+      el.hidden=!(okA&&okQ); if(!el.hidden)n++;
+    });
+    if(count)count.textContent=n+(n===1?' texto':' textos')+(area!=='todos'?' em '+({previdenciario:'Previdenciário',trabalhista:'Trabalhista',tributario:'Tributário'}[area]||''):'');
+    if(empty)empty.hidden=n>0;
+    document.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',String(c.dataset.area===area))});
+    var eq=posts.some(function(p){return !p.hidden&&p.dataset.slug==='equipe'});document.querySelectorAll('[data-nav]').forEach(function(a){a.setAttribute('aria-current',String(a.dataset.nav==='equipe'?eq:(a.dataset.nav===area&&!aberto())))});
+  }
+  function aberto(){return posts.some(function(p){return !p.hidden})}
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){area=c.dataset.area;filtrar()})});
+  if(q)q.addEventListener('input',filtrar);
+  document.querySelectorAll('[data-busca]').forEach(function(b){if(b.tagName!=='BUTTON')return;b.addEventListener('click',function(){
+    if(MODE!=='spa'&&location.pathname.replace(/\/$/,'')!=='/blog'){location.href='/blog/?q='+encodeURIComponent(b.dataset.busca);return}
+    q.value=b.dataset.busca.replace('-',' ');area='todos';filtrar();document.getElementById('lista').scrollIntoView({behavior:'smooth'})})});
+
+  function rota(){
+    if(MODE!=='spa')return;
+    var h=location.hash.replace(/^#\/?/,'');
+    var alvo=null;
+    if(h.indexOf('area/')===0){area=h.slice(5);h=''}
+    posts.forEach(function(p){var on=p.dataset.slug===h;p.hidden=!on;if(on)alvo=p});
+    list.hidden=!!alvo;
+    if(alvo){document.title=alvo.dataset.title+' | Camargo Lourenço Advogados';window.scrollTo(0,0)}
+    else{document.title='Blog jurídico | Camargo Lourenço Advogados'}
+    filtrar();
+  }
+  var params=new URLSearchParams(location.search);
+  if(params.get('area'))area=params.get('area');
+  if(params.get('q')&&q)q.value=params.get('q');
+  window.addEventListener('hashchange',rota);
+  if(MODE==='spa'){rota()}else{filtrar()}
+
+  // compartilhar
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-share]'); if(!b)return;
+    e.preventDefault();
+    var p=b.closest('article.post'), url=SHARE_BASE+(MODE==='spa'?'#/':'/blog/')+p.dataset.slug+(MODE==='spa'?'':'/');
+    if(b.dataset.share==='wa'){
+      window.open('https://wa.me/?text='+encodeURIComponent(p.dataset.title+'\n\n'+p.dataset.resumo+'\n\n'+url),'_blank','noopener');
+    }else{
+      var ok=function(){var s=p.querySelector('.copied');if(s){s.textContent='Link copiado.';setTimeout(function(){s.textContent=''},2500)}};
+      try{navigator.clipboard.writeText(url).then(ok,function(){prompt('Copie o link:',url)})}catch(_){prompt('Copie o link:',url)}
+    }
+  });
+
+
+  // WhatsApp flutuante: no texto, vai direto para o número da área; na lista, pergunta a área
+  var WA={previdenciario:'5511963353678',trabalhista:'5511980347924',tributario:'5511963353678'};
+  var waBtn=document.getElementById('wa-btn'), waMenu=document.getElementById('wa-menu');
+  function postAtual(){return posts.filter(function(p){return !p.hidden})[0]}
+  function msgWa(p){return 'Olá! Vim pelo blog do escritório'+(p?' (texto: '+p.dataset.title+')':'')+' e tenho uma dúvida.'}
+  waMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+    a.href='https://wa.me/'+WA[a.dataset.wa]+'?text='+encodeURIComponent(msgWa(postAtual()));
+    waMenu.hidden=true;waBtn.setAttribute('aria-expanded','false');})});
+  // sobe o botão flutuante quando o rodapé aparece, para não cobrir as redes sociais
+  var fab=document.getElementById('wa-fab'), ft=document.querySelector('footer.ft');
+  function ajustaFab(){var r=ft.getBoundingClientRect(), vis=Math.max(0,window.innerHeight-r.top);fab.style.bottom=(20+vis)+'px'}
+  window.addEventListener('scroll',ajustaFab,{passive:true});window.addEventListener('resize',ajustaFab);ajustaFab();
+  var ftWa=document.getElementById('ft-wa');
+  if(ftWa)ftWa.addEventListener('click',function(e){e.stopPropagation();waBtn.click()});
+  waBtn.addEventListener('click',function(){
+    var p=postAtual();
+    if(p){window.open('https://wa.me/'+WA[p.dataset.area]+'?text='+encodeURIComponent(msgWa(p)),'_blank','noopener');return}
+    var abrir=waMenu.hidden;waMenu.hidden=!abrir;waBtn.setAttribute('aria-expanded',String(abrir));
+  });
+  document.addEventListener('click',function(e){if(!e.target.closest('#wa-fab')&&!waMenu.hidden){waMenu.hidden=true;waBtn.setAttribute('aria-expanded','false')}});
+
+
+  // inscrição na newsletter e envio de dúvida
+  var FORM_URL={{FORM_URL}};
+  var form=document.getElementById('nl'), msg=document.getElementById('nl-msg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nome=form.querySelector('#nl-nome').value.trim(), email=form.querySelector('#nl-email').value.trim();
+    var duvida=form.querySelector('#nl-duvida').value.trim(), receber=form.querySelector('#nl-receber').checked;
+    msg.className='msg';
+    if(!nome||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.className='msg err';msg.textContent='Confira o nome e o e-mail.';return}
+    if(!receber&&!duvida){msg.className='msg err';msg.textContent='Escreva a sua dúvida ou marque para receber a newsletter.';return}
+    if(!form.querySelector('#nl-ok').checked){msg.className='msg err';msg.textContent='Marque a concordância com a Política de Privacidade.';return}
+    function porEmail(){
+      var assunto=duvida&&receber?'Dúvida e inscrição pelo blog':duvida?'Dúvida enviada pelo blog':'Inscrição na newsletter';
+      var corpo='Nome: '+nome+'\nE-mail: '+email+'\nQuer receber a newsletter: '+(receber?'sim':'não')+(duvida?'\n\nDúvida:\n'+duvida:'');
+      location.href='mailto:'+CONTACT+'?subject='+encodeURIComponent(assunto)+'&body='+encodeURIComponent(corpo);
+      msg.className='msg ok';msg.textContent='Abrimos o seu e-mail com a mensagem pronta. É só enviar.';
+    }
+    if(!FORM_URL)return porEmail();
+    var dados=new URLSearchParams({nome:nome,email:email,duvida:duvida,receber:receber?'sim':'nao',consentimento:'sim',origem:location.href.slice(0,300)});
+    fetch(FORM_URL,{method:'POST',mode:'no-cors',body:dados}).then(function(){
+      msg.className='msg ok';msg.textContent=receber?'Pronto! Você vai receber a newsletter no seu e-mail.'+(duvida?' Sua dúvida foi enviada à equipe.':''):'Sua dúvida foi enviada à equipe. Obrigada!';form.reset();
+    },porEmail);
+  });
+})();
+</script>
+</body>
+</html>
